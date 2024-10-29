@@ -62,3 +62,8 @@ while not is_win() and not is_lose():
     else:
         errors += 1
         print(f"Oops :( No such word, you have {ERRORS_TO_LOSE - errors} lives more")
+
+if is_lose():
+        print("=============================")
+        print("= It`s kinda shitty bro/sis =")
+        print("=============================")
