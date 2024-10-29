@@ -7,9 +7,11 @@ def congratulate_user():
     print("= Congratulations! You won! =")
     print("=============================")
 
+def is_win():
+    return guessed == WORDS_TO_WIN
 
-def is_game_over():
-    return guessed == WORDS_TO_WIN or errors == ERRORS_TO_LOSE
+def is_lose():
+    return errors == ERRORS_TO_LOSE
 
 
 def guess_is_valid(candidate):
@@ -40,7 +42,7 @@ print(f"Can you make up {WORDS_TO_WIN} words from letters in word provided by me
 print(f"Your word is '{word}'")
 
 
-while not is_game_over():
+while not is_win() and not is_lose():
     guess = input("Your next take: ")
 
     if guess in guesses:
@@ -53,7 +55,7 @@ while not is_game_over():
     if guess in full_list:
         guessed += 1
         guesses.append(guess)
-        if guessed == WORDS_TO_WIN:
+        if is_win():
             congratulate_user()
             exit()
         print(f"That's right! {WORDS_TO_WIN - guessed} to go")
